@@ -29,6 +29,28 @@ compileTestKotlin {
         jvmTarget = "1.8"
     }
 }
+
+tasks.register('uberJar', Jar) {
+    // Create "Uber Jar" with all Kotlin Std deps in the built jar
+    // https://docs.gradle.org/current/userguide/working_with_files.html#sec:creating_uber_jar_example    
+    archiveClassifier = 'uber'
+
+    // And this to avoid errors
+    // https://stackoverflow.com/questions/67265308/gradle-entry-classpath-is-a-duplicate-but-no-duplicate-handling-strategy-has-b
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    // This too
+    // https://youtrack.jetbrains.com/issue/IDEA-147551
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA' 
+
+    from sourceSets.main.output
+
+    dependsOn configurations.runtimeClasspath
+    from {
+        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+    }
+}
+
 test {
     // Useful for debugging opaque network failures
     //jvmArgs "-Djavax.net.debug=ssl,handshake"
