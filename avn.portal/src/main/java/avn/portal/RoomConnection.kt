@@ -190,6 +190,10 @@ class RoomConnection(private val hubId: String, private val reticulumServer: Ret
         hubChannel?.push(event, payload)
     }
 
+    public fun isOpen(): Boolean {
+        return readyState == ReticulumConnectionState.OPEN
+    }
+
     override fun close() {
         Log.info("Leaving room ${hubId}...")
         if(readyState != ReticulumConnectionState.OPEN) {
