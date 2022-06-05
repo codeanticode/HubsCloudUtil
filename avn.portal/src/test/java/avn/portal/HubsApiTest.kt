@@ -10,7 +10,7 @@ class HubsApiTest {
     // Generate by signing in with X@Y.COM and copying the value of browser local storage > __hubs_store > credentials > token
 
     private val HUB_SERVER = URL("https://hubs.mozilla.com")
-    private val HUB_AUTH_TOKEN = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    private val HUB_AUTH_TOKEN = "Token from sign-in link email"
 
     // Gathering hall
     private val SCENE_ASSET_URL1 = URL("https://data.avncloud.com/dev/GatheringHall.glb")
@@ -18,7 +18,7 @@ class HubsApiTest {
     private val SCENE_ASSET_URL2 = URL("https://data.avncloud.com/dev/RiverIslandScene.glb")
 
     // Created for the test by user X@Y.COm
-    private val ROOM_ID = "ABC123"
+    private val ROOM_ID = "V32UWm4"
 
     @Test
     fun sendMessageSimple() {

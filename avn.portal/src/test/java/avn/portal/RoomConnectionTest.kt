@@ -11,7 +11,7 @@ class RoomConnectionTest {
     private val HUB_AUTH_TOKEN = "AUTH_NOT_REQUIRED_FOR_TEST"
 
     // Created for the test
-    private val ROOM_ID = "w6QJKv9"
+    private val ROOM_ID = "V32UWm4"
 
     @Test(timeout = 10000)
     fun joinAndLeave() {
