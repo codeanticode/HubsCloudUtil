@@ -36,6 +36,7 @@ class RoomConnection(private val hubId: String, private val reticulumServer: Ret
 
     // Reticulum ID of this user within the current session
     var sessionId : String? = null
+    var networkId : String? = null
 
     // JWT encoded permissions token (sent from Reticulum and used to authenticate with Janus)
     var permissionsTokenJwt : String? = null
@@ -124,10 +125,14 @@ class RoomConnection(private val hubId: String, private val reticulumServer: Ret
 
             // Now join the hub channel
 
+            // Create network ID
+            networkId = createNetworkId()
+            Log.info("networkId = $networkId")
+
             var hubResponse : Map<*, *>? = null
             val params = HashMap<String, Any>()
             params["context"] = hashMapOf("mobile" to false, "embed" to false)
-            params["profile"] = hashMapOf("avatarId" to createNetworkId(), "displayName" to agentName)
+            params["profile"] = hashMapOf("avatarId" to networkId, "displayName" to agentName)
 
             params["auth_token"] = reticulumServer.authToken
 
